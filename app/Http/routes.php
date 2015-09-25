@@ -1,5 +1,4 @@
 <?php
-
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -11,6 +10,13 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'Auth\AuthController@index');
+Route::post('/', 'Auth\AuthController@logincheck');
+
+Route::get('/logout', 'AdminController@logout');
+Route::get('/home', 'AdminController@home');
+Route::get('/product', 'AdminController@product');
+Route::get('/purchase', 'AdminController@purchase');
+Route::get('/sales', 'AdminController@sales');
+Route::get('/banking', 'AdminController@banking');
+Route::get('/profit', 'AdminController@profit');

@@ -62,4 +62,26 @@ class AuthController extends Controller
             'password' => bcrypt($data['password']),
         ]);
     }
+
+
+    public function index() {
+        $data['msg'] = "";
+        return \View::make('index', $data);
+    }
+
+    public function logincheck() {
+        
+        $email = \Input::get('email');
+        $password = \Input::get('password');       
+        if (\Auth::attempt(['email' => $email, 'password' => $password, 'role' => 1])) {
+            return redirect('/home');
+        }
+        else{
+            $data['msg'] = 'Invalid Details..';
+            return \View::make('index', $data);
+        }
+
+    }
+
+   
 }
