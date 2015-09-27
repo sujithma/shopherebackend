@@ -15,8 +15,9 @@
         <!-- Custom CSS -->
         {!! HTML::style('Assets/css/bootstrap.min.css') !!}
         {!! HTML::style('Assets/css/portfolio-item.css') !!} 
+        {!! HTML::style('Assets/css/sidebar.css') !!} 
         @yield('style')
-        @include('includes.header')
+        
     </head>
 
     <body>
@@ -27,9 +28,10 @@
         {!! HTML::script('Assets/js/jquery.js') !!}
         {!! HTML::script('Assets/js/bootstrap.js') !!} 
         {!! HTML::script('Assets/js/bootstrap.min.js') !!}
+        {!! HTML::script('Assets/js/sidebar.js') !!}
         @yield('script')
         
-        @include('includes.footer')
+     <!--    @include('includes.footer') -->
     </body>
 
 </html>

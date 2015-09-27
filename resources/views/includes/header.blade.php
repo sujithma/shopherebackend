@@ -1,33 +1,40 @@
 <!-- Navigation -->
+
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <!-- <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="{{ action('AdminController@home') }}">Home</a>
+            </button> -->
+                      
         </div>
+        
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li>
-                    <a href="{{ action('AdminController@product') }}">Products</a>
+                <li> <a class="navbar-brand" href="{{ action('AdminController@home') }}">Home</a>
                 </li>
                 <li>
-                    <a href="{{ action('AdminController@purchase') }}">Purchase</a>
+                    <a class="navar-sub" href="{{ action('AdminController@product') }}">Products</a>
                 </li>
                 <li>
-                    <a href="{{ action('AdminController@sales') }}">Sales</a>
+                    <a class="navar-sub" href="{{ action('AdminController@purchase') }}">Purchase</a>
                 </li>
                 <li>
-                    <a href="{{ action('AdminController@banking') }}">Banking</a>
+                    <a class="navar-sub" href="{{ action('AdminController@sales') }}">Sales</a>
                 </li>
                 <li>
-                    <a href="{{ action('AdminController@profit') }}">Profit</a>
+                    <a class="navar-sub" href="{{ action('AdminController@banking') }}">Banking</a>
+                </li>
+                <li>
+                    <a class="navar-sub" href="{{ action('AdminController@profit') }}">Profit</a>
+                </li>
+                <li>
+                  <a href="{{ action('AdminController@logout') }}">Logout</a>
                 </li>
             </ul>
         </div>

@@ -20,3 +20,7 @@ Route::get('/purchase', 'AdminController@purchase');
 Route::get('/sales', 'AdminController@sales');
 Route::get('/banking', 'AdminController@banking');
 Route::get('/profit', 'AdminController@profit');
+Route::post('/addproduct', 'AdminController@addProduct');
+Route::post('/deleteSale', 'AdminController@deleteSale');
+Route::post('/getSaleDetail', 'AdminController@getSaleDetail');
+Route::post('/edit-sale', 'AdminController@editSale');
