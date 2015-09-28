@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\Products;
 use App\Models\purchase;
 use App\Models\Sale;
@@ -13,17 +14,15 @@ use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use DB;
 
 class ProductController extends Controller {
-
 	
-	
-	public function purchase() {
-		$data['purchases'] = DB::table('products')                
-                   			->join('purchase', 'purchase.product_id', '=', 'products.id')                   
-                  			->get();
-        $data['products'] = Products::lists('name','id'); 
-		return \View::make('purchase', $data);
-	}
-	
+	public function product() {
+	//$data['products'] = DB::table('Products')->paginate(1);
+    $data['products'] = Products::paginate(1);
+    return \View::make('product', $data);
+  }	
+  public function addProduct() {
+  	return \View::make('addProduct');
+  }
 	
 
     

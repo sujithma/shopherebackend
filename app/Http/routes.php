@@ -20,18 +20,18 @@ Route::group(['middleware' => ['auth']], function () {
 
 	Route::get('/home', 'AdminController@home');
 
-	Route::get('/product', 'AdminController@product');
-	Route::post('/addproduct', 'AdminController@addProduct');
+	Route::get('/product', 'ProductController@product');
+	Route::get('/addproduct', 'ProductController@addProduct');
 
-	Route::get('/purchase', 'AdminController@purchase');
+	Route::get('/purchase', 'PurchaseController@purchase');
 
-	Route::get('/sales', 'AdminController@sales');
-	Route::post('/edit-sale', 'AdminController@editSale');
+	Route::get('/sales', 'salesController@sales');
+	Route::post('/edit-sale', 'salesController@editSale');
 
 	Route::get('/banking', 'BankingController@banking');
 	Route::post('/add-transaction', 'BankingController@addTransaction');
 
-	Route::get('/profit', 'AdminController@profit');
+	Route::get('/profit', 'ProfitController@profit');
 
 	
 	

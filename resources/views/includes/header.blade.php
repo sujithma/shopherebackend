@@ -19,19 +19,19 @@
                 <li> <a class="navbar-brand" href="{{ action('AdminController@home') }}">Home</a>
                 </li>
                 <li>
-                    <a class="navar-sub" href="{{ action('AdminController@product') }}">Products</a>
+                    <a class="navar-sub" href="{{ action('ProductController@product') }}">Products</a>
                 </li>
                 <li>
-                    <a class="navar-sub" href="{{ action('AdminController@purchase') }}">Purchase</a>
+                    <a class="navar-sub" href="{{ action('PurchaseController@purchase') }}">Purchase</a>
                 </li>
                 <li>
-                    <a class="navar-sub" href="{{ action('AdminController@sales') }}">Sales</a>
+                    <a class="navar-sub" href="{{ action('salesController@sales') }}">Sales</a>
                 </li>
                 <li>
-                    <a class="navar-sub" href="{{ action('AdminController@banking') }}">Banking</a>
+                    <a class="navar-sub" href="{{ action('BankingController@banking') }}">Banking</a>
                 </li>
                 <li>
-                    <a class="navar-sub" href="{{ action('AdminController@profit') }}">Profit</a>
+                    <a class="navar-sub" href="{{ action('ProfitController@profit') }}">Profit</a>
                 </li>
                 <li>
                   <a href="{{ action('AdminController@logout') }}">Logout</a>

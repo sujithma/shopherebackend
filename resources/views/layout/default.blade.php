@@ -15,24 +15,34 @@
         <!-- Custom CSS -->
         {!! HTML::style('Assets/css/bootstrap.min.css') !!}
         {!! HTML::style('Assets/css/portfolio-item.css') !!} 
-        {!! HTML::style('Assets/css/sidebar.css') !!} 
+        {!! HTML::style('Assets/css/sidebar.css') !!}         
         @yield('style')
-        
+        @include('includes.header')
     </head>
 
     <body>
-        @yield('content')
-        <!-- Page Content -->
-        <!-- /.container -->
         
+        <!-- Page Content -->
+        <!-- /.container -->        
         {!! HTML::script('Assets/js/jquery.js') !!}
         {!! HTML::script('Assets/js/bootstrap.js') !!} 
         {!! HTML::script('Assets/js/bootstrap.min.js') !!}
         {!! HTML::script('Assets/js/sidebar.js') !!}
-        
         @yield('script')
+        @include('includes.slider')
+        <div id="page-content-wrapper">
+            <!-- Keep all page content within the page-content inset div! -->
+            <div class="page-content inset">
+                <div class="row">
+                    <div class="col-md-12">
+                        @yield('content')
+                        @include('includes.footer')
+                    </div>
+                </div>
+            </div>
+        </div>
         
-     <!--    @include('includes.footer') -->
+     
     </body>
 
 </html>
