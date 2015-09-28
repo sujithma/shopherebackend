@@ -83,24 +83,25 @@
         		<!-- all products table end-->
 
         		<!-- add products form -->
-          <div class="viewAddProduct">
-        		<table>
-        			<tr>
-        				<td> {!! Form::label('Title', '', array('class' => 'col-md-4 control-label')) !!}</td>
-              			<td>{!! Form::text('name','', array('class' => 'form-control input-md productName')) !!}</td>
-              		</tr>
-              		<tr>
-        				<td> {!! Form::label('Quantity', '', array('class' => 'col-md-4 control-label')) !!}</td>
-              			<td>{!! Form::text('title','', array('class' => 'form-control input-md productQuantity')) !!}</td>
-              		</tr>
-              		<tr>
-              			<td> {!! Form::label('Image', '', array('class' => 'col-md-4 control-label')) !!}</td>
-              			<td> {!! Form::file('image') !!}</td>
-              		</tr>
-              		  <tr><td>{!! Form::submit('Submit', array('class' => 'btn btn-primary addproduct')) !!}</td></tr>
-              		</table>
-                </div>
-  
+             <div class="viewAddProduct">
+              <div class="form-group">
+                {!! Form::label('', 'Product Name', array('class' => 'col-md-4 control-label')) !!}
+                <div class="col-md-4">
+                  {!! Form::text('','', array('class' => 'form-control input-md productName')) !!}
+                  </div><br><br>
+                  {!! Form::label('', 'Quantity', array('class' => 'col-md-4 control-label')) !!}
+                <div class="col-md-4">
+                  {!! Form::text('','', array('class' => 'form-control input-md productQuantity')) !!}
+                  </div><br><br>
+                  {!! Form::label('','Image', array('class' => 'col-md-4 control-label')) !!}
+                <div class="col-md-4">
+                  {!! Form::file('image', array('class' => 'input-file')) !!}                  
+                </div><br><br>
+                <div class="col-md-4">
+                  {!! Form::submit('Submit', array('class' => 'btn btn-primary','id'=>'signSubmit')); !!}
+                </div>                
+              </div>
+            </div>                        	
         		<!-- add products form end -->
 
               @include('includes.footer')

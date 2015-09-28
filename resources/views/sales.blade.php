@@ -3,9 +3,7 @@
 @section('script')
 	{!! HTML::script('Assets/js/custom.js') !!}
   <script type="text/javascript">
-    var token = "{{ csrf_token() }}";
-    var AddProductUrl = "{{ action(('AdminController@addProduct')) }}";    
-
+    var token = "{{ csrf_token() }}";  
   </script>
 
 @stop
@@ -85,9 +83,9 @@
           <div class="row">
               <div class="col-md-12">
               	
-              	<!-- all sales table -->
 
 
+     <!-- all sales table -->
       <div class="allSale">
               		@if (count($allsales)<1) 
 				  <h4>You have no Sale made</h4>             
@@ -128,10 +126,10 @@
 			                        {{ $sale->unit_price }}
 			                      </td>
 			                      <td>
-				                     <a class="btn btn-block btn-info editSaleButton" data-id="{{ $sale->id }}">Edit</a>
+				                     <a class="btn btn-block btn-info editButton" data-id="{{ $sale->id }}" type="sale">Edit</a>
 				                   </td>
 				                   <td>
-				                      <a class="btn btn-block btn-info deleteSale" data-id="{{ $sale->id }}">Remove</a>
+				                      <a class="btn btn-block btn-info delete" data-id="{{ $sale->id }}" type="sale">Remove</a>
 				                   </td>
 			                   		
 			                  </tr>
@@ -147,37 +145,35 @@
 				<!-- all sales table end-->  
 				<!-- add sale start -->
         
-        <div class="viewAddSale">
-					<table>
-        			<tr>
-        				<td></td><td> {!! Form::label('Title', '', array('class' => 'col-md-4 control-label')) !!}</td>
-              			<td>{!! Form::select('products.name', $products, array('class' => 'form-control', 'id' => 'editproduct')) !!}</td>
-              		</tr>
-              		<tr>
-        				<td></td><td> {!! Form::label('Date', '', array('class' => 'col-md-4 control-label')) !!}</td>
-              			<td>{!! Form::text('title','', array('class' => 'form-control input-md saleDate','placeholder'=>'yyyy-mm-dd')) !!}</td>
+        <div class="viewAddSale">					
+          <div class="form-group">
+            {!! Form::label('', 'Product Name', array('class' => 'col-md-4 control-label')) !!}
+            <div class="col-md-4">
+              {!! Form::select('products.name', $products, array('class' => 'form-control', 'id' => 'saleproduct')) !!}
+              </div><br><br>
+              {!! Form::label('', 'Date', array('class' => 'col-md-4 control-label','placeholder'=>'yyyy-mm-dd')) !!}
+            <div class="col-md-4">
+              {!! Form::text('','', array('class' => 'form-control input-md saleDate')) !!}
+              </div><br><br>                            
+              {!! Form::label('', 'Quantity', array('class' => 'col-md-4 control-label')) !!}
+            <div class="col-md-4">
+              {!! Form::text('','', array('class' => 'form-control input-md saleQuantity')) !!}
+              </div><br><br>
+              {!! Form::label('','Total Price', array('class' => 'col-md-4 control-label')) !!}
+            <div class="col-md-4">
+              {!! Form::text('','', array('class' => 'form-control input-md saleTotal')) !!}                 
+            </div><br><br>
+             {!! Form::label('','Unit Price', array('class' => 'col-md-4 control-label')) !!}
+            <div class="col-md-4">
+              {!! Form::text('','', array('class' => 'form-control input-md saleUnit')) !!}                 
+            </div><br><br>
+            <div class="col-md-4">
+              {!! Form::submit('Submit', array('class' => 'btn btn-primary addSaleSubmit')); !!}
+            </div>                
+          </div>          
+        </div>
 
-
-              		</tr>
-              		<tr>
-        				<td></td><td> {!! Form::label('Quantity', '', array('class' => 'col-md-4 control-label')) !!}</td>
-              			<td>{!! Form::text('title','', array('class' => 'form-control input-md productQuantity')) !!}</td>
-              		</tr>
-              		<tr>
-        				<td></td><td> {!! Form::label('Total Price', '', array('class' => 'col-md-4 control-label')) !!}</td>
-              			<td>{!! Form::text('title','', array('class' => 'form-control input-md productQuantity')) !!}</td>
-              		</tr>
-              		<tr>
-        				<td></td><td> {!! Form::label('UnitPrice', '', array('class' => 'col-md-4 control-label')) !!}</td>
-              			<td>{!! Form::text('title','', array('class' => 'form-control input-md productQuantity')) !!}</td>
-              		</tr>
-              		
-              		  <tr><td>{!! Form::submit('Submit', array('class' => 'btn btn-primary addproduct')) !!}</td></tr>
-              		</table>
-              		<!-- add sale start -->
-                </div>
-
-
+              <!-- add sale end-->
 
      @include('includes.footer')
             </div>

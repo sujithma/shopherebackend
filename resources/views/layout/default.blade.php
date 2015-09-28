@@ -29,6 +29,7 @@
         {!! HTML::script('Assets/js/bootstrap.js') !!} 
         {!! HTML::script('Assets/js/bootstrap.min.js') !!}
         {!! HTML::script('Assets/js/sidebar.js') !!}
+        
         @yield('script')
         
      <!--    @include('includes.footer') -->

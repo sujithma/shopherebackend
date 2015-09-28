@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Products;
 use App\Models\purchase;
 use App\Models\Sale;
+use App\Models\Cash;
 use App\User;
 use Validator;
 use App\Http\Controllers\Controller;
@@ -15,65 +16,37 @@ class AdminController extends Controller {
 
 	public function home() {
 		return \View::make('home');
-	}
-	public function product() {
-		$data['products'] = Products::all();
-		return \View::make('product', $data);
-	}
-	public function purchase() {
-		$data['purchases'] = DB::table('products')                
-                   			->join('purchase', 'purchase.product_id', '=', 'products.id')                   
-                  			->get();
-		return \View::make('purchase', $data);
-	}
-	public function sales() {		
-		$data['allsales'] =  DB::table('products')                
-                   			->join('sales', 'sales.product_id', '=', 'products.id')                   
-                  			->get();
-		$data['products'] = Products::lists('name','id');                  
-		return \View::make('sales', $data);
-	}
-	public function banking() {
-		return \View::make('banking');
-	}
-	public function profit() {
-		return \View::make('profit');
-	}
+	}	
+	
 
-	 public function logout() {      
-       
-       \Session::flush();
-        return redirect('/');
+	public function logout() {             
+    \Session::flush();
+    return redirect('/');
+  }
+
+  public function delete() {
+  	$input = \Input::all();  
+  	if($input['type']=='sale')  {
+  	$sale = Sale::find($input['id']);
+  	$status = $sale->delete() ? 1 : 0;
     }
-
-    public function addProduct() {
-
+    else {
+    	$purchase = Purchase::find($input['id']);
+    	$status = $purchase->delete() ? 1 : 0;
     }
-    public function deleteSale() {
-    	$input = \Input::all();    	
-		$sale = Sale::find($input['id']);
-		$status = $sale->delete() ? 1 : 0;
-		
-		return \Response::json($status);
+    return \Response::json($status);
+  }
+
+  public function getDetail() {
+  	//$id = \Input::get('id');
+  	$input = \Input::all();
+  	if($input['type']=='sale')  {
+   	$detail = Sale::find($input['id']);
     }
-
-   public function getSaleDetail() {
-   	$id = \Input::get('id');
-   	$sale = Sale::find($id);
-   	return \Response::json($sale);
-   }
-
-   public function editSale() {
-   	$input = \Input::all();
-   	$sale = Sale::find($input['id']);
-
-   	$sale->product_id = $input['productId'];
-   	$sale->date = $input['date'];
-   	$sale->quantity = $input['quantity'];
-   	$sale->total_price = $input['totalPrice'];
-   	$sale->unit_price = $input['unit_price'];
-   	$sale->save();
-   	return \Response::json($sale);
-
-   }
+  	else{
+  		$detail = Purchase::find($input['id']);
+  	}
+  	return \Response::json($detail);
+  }
+  
 }
