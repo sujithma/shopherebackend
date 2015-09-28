@@ -13,22 +13,23 @@
 
   @if (count($products)<1) 
     <h4>You have no Products</h4>             
-  @else     
-	 	<div class="col-md-12">    
-        <table class="table table-striped table-bordered">
-          <thead>
-            <tr>
-              <th class="col-md-1">Name</th>
-              <th class="col-md-1">Quantity</th>
-              <th class="col-md-1">Image</th>
-              <th class="col-md-1">Edit</th>
-              <th class="col-md-1">Delete</th>
-            </tr>
+  @else   
+  <h2 class="sub-header">All Products</h2>
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <thead>
+          <tr>  	 	            
+            <th class="col-md-1">Name</th>
+            <th class="col-md-1">Quantity</th>
+            <th class="col-md-1">Image</th>
+            <th class="col-md-1">Edit</th>
+            <th class="col-md-1">Delete</th>
+          </tr>
           </thead>            
            @foreach ($products as $product) 
           <tbody>
              
-              <tr class="todoData">
+              <tr>
                 <td>
                 {{ $product->name }}
                 </td>
@@ -44,7 +45,7 @@
                 <td>
                 <a class="btn btn-block btn-info delete" data-id="{{ $product->id }}" type="product">Remove</a>
                 </td>                    
-              </tr>               
+                            
             </tr>           
         </tbody>
       @endforeach

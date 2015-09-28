@@ -16,11 +16,14 @@ use DB;
 class ProductController extends Controller {
 	
 	public function product() {
+    // var_dump(\Request::is('produ*'));
+    // exit;
 	//$data['products'] = DB::table('Products')->paginate(1);
     $data['products'] = Products::paginate(1);
     return \View::make('product', $data);
   }	
   public function addProduct() {
+    
   	return \View::make('addProduct');
   }
 	

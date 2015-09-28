@@ -21,7 +21,7 @@ Route::group(['middleware' => ['auth']], function () {
 	Route::get('/home', 'AdminController@home');
 
 	Route::get('/product', 'ProductController@product');
-	Route::get('/addproduct', 'ProductController@addProduct');
+	Route::get('/product/add', 'ProductController@addProduct');
 
 	Route::get('/purchase', 'PurchaseController@purchase');
 
