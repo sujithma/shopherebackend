@@ -21,6 +21,8 @@
               <th class="col-md-1">Name</th>
               <th class="col-md-1">Quantity</th>
               <th class="col-md-1">Image</th>
+              <th class="col-md-1">Edit</th>
+              <th class="col-md-1">Delete</th>
             </tr>
           </thead>            
            @foreach ($products as $product) 
@@ -35,7 +37,14 @@
                 </td>
                 <td>
                   {{ $product->image }}
-                </td>               
+                </td>  
+                <td>
+                 <a class="btn btn-block btn-info editButton" data-id="{{ $product->id }}" type="product">Edit</a>
+                </td>
+                <td>
+                <a class="btn btn-block btn-info delete" data-id="{{ $product->id }}" type="product">Remove</a>
+                </td>                    
+              </tr>               
             </tr>           
         </tbody>
       @endforeach
