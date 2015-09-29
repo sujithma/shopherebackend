@@ -8,7 +8,8 @@
   </script>
 @stop
 @section('content')        
-   <a style="float : right" class="btn btn-primary" href="{{ action('ProductController@showAddProduct') }}">Add Product</a>        
+   <a style="float : right" class="btn btn-primary" href="{{ action('ProductController@showAddProduct') }}">Add Product</a>   
+   <a style="float : right" class="btn btn-primary multiDelete" href="{{ action('ProductController@showAddProduct') }}">Delete Selected</a>       
   <!-- all products table -->
 
   @if (count($products)<1) 
@@ -33,13 +34,15 @@
              
               <tr>
                 <td>
+                {!! Form::checkbox('checkProduct', 'value', false) !!}  
                 {{ $product->name }}
                 </td>
                 <td>
                  {{ $product->quantity }}
                 </td>
                 <td>
-                  {{ $product->image }}
+                  <img src="Assets/images/{{ $product->image }}" class="img-thumbnail" alt="Cinque Terre" width="100" height="100">
+                  
                 </td>  
                 <td>
                  <a class="editProduct" href="{{ action('ProductController@editProduct', ['id' => $product->id]) }}">Edit</a>

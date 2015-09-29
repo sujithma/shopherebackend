@@ -11,7 +11,7 @@
   <!-- add products form -->
   <h2 class="sub-header">Add New Product</h2>
   <hr>
-  {!! Form::open(array('method' => 'post', 'enctype' => 'multipart/form-data')) !!}
+  {!! Form::open(array('method' => 'post', 'enctype' => 'multipart/form-data', 'action' => 'ProductController@addProduct')) !!}
   <div class="form-group">
     {!! Form::label('', 'Product Name', array('class' => 'col-md-4 control-label')) !!}
     <div class="col-md-4">        
@@ -35,10 +35,12 @@
             <h4>{{$errors->first('image')}}</h4>
         @endif
     <br><br>
+    <input type="hidden" name="id" value="0"> 
     <div class="col-md-4">
       {!! Form::submit('Submit', array('class' => 'btn btn-primary')); !!}
-    </div>                
+    </div>  
+
   </div>
-                         	
+{!! Form::close() !!}                      	
   <!-- add products form end -->        
 @stop

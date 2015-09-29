@@ -20,42 +20,52 @@ class ProductController extends Controller {
     // var_dump(\Request::is('produ*'));
     // exit;
 	//$data['products'] = DB::table('Products')->paginate(1);
-    $data['products'] = Products::paginate(2);
+    $data['products'] = Products::paginate(3);
     return \View::make('product', $data);
   }	
   public function showAddProduct() {    
-  	return \View::make('addProduct');
+  	return \View::make('add-Product');
   }
 
-  public function addProduct() {
-   
+public function addProduct() {   
+    $id = \Input::get('id'); 
     $rules = array(
-            'name'=>'required',
-            'quantity'=>'required|numeric',
-            'image'=>'required'                    
-         );
+        'name'=>'required',
+        'quantity'=>'required|numeric',
+        'image'=>'image|mimes:jpeg,jpg,png,gif'                    
+    );
     $input = \Input::all();
     $valid = Validator::make($input,$rules);
     if ($valid->fails()) {            
         return \Redirect::back()->withErrors($valid);    
     }
-    else {
+    else { // If validation success
         $name = \Input::get('name');
         $quantity = \Input::get('quantity');
         $image = \Input::file('image');
 
-        $filename = time()."-".$image->getClientOriginalName();
-        $path = 'Assets/images/'.$filename;      
-       \Image::make($image->getRealPath())->resize(200, 200)->save($path);
+        $product = $id ? Products::find($id) : new Products; // Creating product elobquent object
 
-        $product = new Products;
+        // If image selected
+        if($image)  {
+            $filename = time()."-".$image->getClientOriginalName();
+            $path = 'assets/images/'.$filename;      
+            \Image::make($image->getRealPath())->resize(200, 200)->save($path);
+
+            $existingImage = '/assets/images/'.$product->image;
+            if(file_exists($existingImage)) {
+                \File::delete($existingImage);
+            }
+            $product->image = $filename;
+        }
+
         $product->name = $name;
         $product->quantity = $quantity;
-        $product->image = $filename;
-        $product->save();
-        return \View::make('addProduct');
+        $product->save(); 
+
+        return redirect(action('ProductController@product'));
     }
-  }
+}
 
   public function editProduct($id) {    
     $data['product'] = Products::find($id);    

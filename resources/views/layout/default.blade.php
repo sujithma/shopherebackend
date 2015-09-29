@@ -6,8 +6,8 @@
         <title>Dashboard with Off-canvas Sidebar</title>
         <meta name="generator" content="Bootply" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-         {!! HTML::style('Assets/css/bootstrap.min.css') !!}  
-         {!! HTML::style('Assets/css/styles.css') !!}           
+         {!! HTML::style('assets/css/bootstrap.min.css') !!}  
+         {!! HTML::style('assets/css/styles.css') !!}           
         @yield('style')
        
     </head>
@@ -74,10 +74,10 @@
     <!-- script references 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>-->
         
-         {!! HTML::script('Assets/js/jquery.js') !!}
+         {!! HTML::script('assets/js/jquery.js') !!}
 
-        {!! HTML::script('Assets/js/scripts.js') !!} 
-        {!! HTML::script('Assets/js/bootstrap.min.js') !!}
+        {!! HTML::script('assets/js/scripts.js') !!} 
+        {!! HTML::script('assets/js/bootstrap.min.js') !!}
         
         @yield('script')
     </body>

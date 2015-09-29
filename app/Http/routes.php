@@ -12,7 +12,7 @@
 
 Route::get('/', 'Auth\AuthController@index');
 Route::post('/', 'Auth\AuthController@logincheck');
-Route::group(['middleware' => ['auth']], function () {
+Route::group(['middleware' => ['admin']], function () {
 
 	Route::get('/logout', 'AdminController@logout');
 	Route::post('/delete', 'AdminController@delete');
@@ -22,7 +22,7 @@ Route::group(['middleware' => ['auth']], function () {
 
 	Route::get('/product', 'ProductController@product');
 	Route::get('/product/add', 'ProductController@showAddProduct');
-	Route::post('/product/add', 'ProductController@addProduct');
+	Route::post('/product/save', 'ProductController@addProduct');
 	Route::post('/product/delete', 'ProductController@delete');
 	Route::get('/product/edit/{id}', 'ProductController@editProduct');
 
