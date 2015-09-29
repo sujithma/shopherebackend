@@ -18,7 +18,7 @@ class salesController extends Controller {
 		$data['allsales'] =  DB::table('products')                
                    			->join('sales', 'sales.product_id', '=', 'products.id')                   
                   			->get();
-		$data['products'] = Products::lists('name','id');                  
+		                  
 		return \View::make('sales', $data);
 	}
 	
@@ -37,7 +37,11 @@ class salesController extends Controller {
    	return \Response::json($sale);
 
    }
+   public function addSale() {  
+   $data['products'] = Products::lists('name','id');  
 
+   return \View::make('addSale', $data);  
+   }
 	
 
 }

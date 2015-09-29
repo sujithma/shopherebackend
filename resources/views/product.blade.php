@@ -8,13 +8,15 @@
   </script>
 @stop
 @section('content')        
-   <a style="float : right" class="btn btn-primary" href="{{ action('ProductController@addProduct') }}">Add Product</a><br>           
+   <a style="float : right" class="btn btn-primary" href="{{ action('ProductController@showAddProduct') }}">Add Product</a>        
   <!-- all products table -->
 
   @if (count($products)<1) 
     <h4>You have no Products</h4>             
-  @else   
+  @else  
+   
   <h2 class="sub-header">All Products</h2>
+  <hr>
     <div class="table-responsive">
       <table class="table table-striped">
         <thead>
@@ -40,10 +42,10 @@
                   {{ $product->image }}
                 </td>  
                 <td>
-                 <a class="btn btn-block btn-info editButton" data-id="{{ $product->id }}" type="product">Edit</a>
+                 <a class="editProduct" href="{{ action('ProductController@editProduct', ['id' => $product->id]) }}">Edit</a>
                 </td>
                 <td>
-                <a class="btn btn-block btn-info delete" data-id="{{ $product->id }}" type="product">Remove</a>
+                <a class="productDelete" data-id="{{ $product->id }}">Remove</a>
                 </td>                    
                             
             </tr>           
@@ -53,7 +55,7 @@
 	 </div>  
   @endif 
 
-  {!! $products->render() !!}
+  <div align="center">{!! $products->render() !!} </div>
     
   <!-- all products table end-->
           

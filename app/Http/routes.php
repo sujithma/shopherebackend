@@ -21,15 +21,22 @@ Route::group(['middleware' => ['auth']], function () {
 	Route::get('/home', 'AdminController@home');
 
 	Route::get('/product', 'ProductController@product');
-	Route::get('/product/add', 'ProductController@addProduct');
+	Route::get('/product/add', 'ProductController@showAddProduct');
+	Route::post('/product/add', 'ProductController@addProduct');
+	Route::post('/product/delete', 'ProductController@delete');
+	Route::get('/product/edit/{id}', 'ProductController@editProduct');
+
 
 	Route::get('/purchase', 'PurchaseController@purchase');
+	Route::get('/purchase/add', 'PurchaseController@addPurchase');
+	Route::get('/purchase/edit/{id}', 'PurchaseController@editPurchase');
 
 	Route::get('/sales', 'salesController@sales');
-	Route::post('/edit-sale', 'salesController@editSale');
+	Route::get('/sales/add', 'salesController@addSale');
+	Route::get('/sales/edit/{id}', 'salesController@editSale');
 
 	Route::get('/banking', 'BankingController@banking');
-	Route::post('/add-transaction', 'BankingController@addTransaction');
+	Route::post('/banking/addTransaction', 'BankingController@addTransaction');
 
 	Route::get('/profit', 'ProfitController@profit');
 
